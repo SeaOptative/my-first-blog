@@ -9,33 +9,33 @@
         
     </head>
     <body>
-        <header class="page-header">
-            <div class="container">
-                <h1><a href="/">Django Girls Blog</a></h1>
-            </div>
-        </header>
-        
-        <main class="container">
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
+        <div class="content container">
             <div class="row">
-                <div class="col">
-                    {% for post in posts %}
-                        <article class="post">
-                            <time class="date">
-                                {{ post.published_date }}
-                            </time>
-                            <h2><a href="">{{ post.title }}</a></h2>
-                            <p>{{ post.text|linebreaksbr }}</p>
-                        </article>
-                    {% endfor %}
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
                 </div>
             </div>
-        </main>
+        </div>
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>The Ivy Tech Community College of Indiana Associate Degree in Nursing and the Practical/Vocational Nursing program systems are pursuing re-accreditation from the National League for Nursing Commission for Nursing Education Accreditation (NLN CNEA), located at 2600 Virginia Avenue, NW, 8th Floor, Washington, DC 20037; phone 202-909-2487. Interested parties are invited to submit third-party comments in writing directly to NLN CNEA, attention Dr. Teresa Shellenbarger, 
-                NLN CNEA Executive Director, no later than September 4, 2023 (2 weeks before site visit) to cneaaccreditation@nln.org.</p>
-        </article>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
     </body>
 </html>
