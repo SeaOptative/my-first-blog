@@ -1,13 +1,14 @@
 h1 a, h2 a {
-    color: #C25100;
+    color: #0452fc;
     font-family: 'Lobster';
 }
 
 body {
     padding-left: 15px;
+    background-color: #03d2ee;
 }
 .page-header {
-    background-color: #C25100;
+    background-color: #082dfd;
     margin-top: 0;
     margin-bottom: 40px;
     padding: 20px 20px 20px 40px;
@@ -75,4 +76,8 @@ h4 {
 .btn-secondary:hover {
     color: #FFFFFF;
     background-color: #C25100;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
 }
